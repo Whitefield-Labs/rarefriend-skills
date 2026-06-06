@@ -131,7 +131,7 @@ async function main() {
   }
 
   const server = new Server(
-    { name: 'rarefriend-crm', version: '1.0.0' },
+    { name: 'rarefriend-personal-network-manager', version: '1.0.0' },
     {
       capabilities: {
         tools: {},

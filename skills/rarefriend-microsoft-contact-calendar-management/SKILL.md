@@ -1,5 +1,5 @@
 ---
-name: rarefriend-microsoft-crm
+name: rarefriend-microsoft-contact-calendar-management
 description: >
   Manage Microsoft Outlook contacts and calendar from your AI assistant using Rarefriend.
   Use when the user wants to: search Outlook contacts, schedule Outlook or Teams meetings,
@@ -239,4 +239,4 @@ get_integration_sync_status("microsoft_contacts")
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Direct user to rarefriend.com → Settings → Integrations → LinkedIn. Once synced, LinkedIn connections are searchable here.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders and phone contacts** — available in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `rarefriend-crm`.
+- **Full feature set in one skill** — install `rarefriend-personal-network-manager`.

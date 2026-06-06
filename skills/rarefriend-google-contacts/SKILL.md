@@ -183,8 +183,8 @@ Wait until sync completes (usually a couple of minutes) before searching synced 
 ## Other capabilities (outside this skill)
 
 - **Google Calendar** — schedule meetings, find free time, create events. Install `rarefriend-google-calendar`.
-- **Microsoft Outlook** — Outlook contacts and calendar. Install `rarefriend-microsoft-crm`.
+- **Microsoft Outlook** — Outlook contacts and calendar. Install `rarefriend-microsoft-contact-calendar-management`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Direct user to rarefriend.com → Settings → Integrations → LinkedIn. Once synced, LinkedIn contacts appear here with `source="linkedin"`.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders and phone contacts** — available in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `rarefriend-crm`.
+- **Full feature set in one skill** — install `rarefriend-personal-network-manager`.

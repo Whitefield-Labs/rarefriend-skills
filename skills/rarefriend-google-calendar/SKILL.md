@@ -200,8 +200,8 @@ get_integration_sync_status("google_calendar")
 ## Other capabilities (outside this skill)
 
 - **Contact management** — create, update, tag, and bulk import contacts. Install `rarefriend-google-contacts`.
-- **Microsoft Outlook** — Outlook calendar and contacts. Install `rarefriend-microsoft-crm`.
+- **Microsoft Outlook** — Outlook calendar and contacts. Install `rarefriend-microsoft-contact-calendar-management`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Direct user to rarefriend.com → Settings → Integrations → LinkedIn. Once synced, LinkedIn connections are searchable as attendees.
 - **Hops on WhatsApp** — same calendar-linked contacts accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders** — set follow-up reminders on contacts in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `rarefriend-crm`.
+- **Full feature set in one skill** — install `rarefriend-personal-network-manager`.

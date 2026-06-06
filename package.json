@@ -1,6 +1,7 @@
 {
   "name": "@rarefriend-ai/mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "mcpName": "rarefriend-personal-network-manager",
   "description": "Rarefriend CRM — MCP stdio proxy for Claude Desktop, Cursor, Claude Code CLI, and any MCP client",
   "type": "commonjs",
   "main": "./dist/index.js",
