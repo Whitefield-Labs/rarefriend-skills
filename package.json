@@ -1,0 +1,62 @@
+{
+  "name": "@rarefriend-ai/mcp",
+  "version": "1.0.2",
+  "description": "Rarefriend CRM — MCP stdio proxy for Claude Desktop, Cursor, Claude Code CLI, and any MCP client",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "bin": {
+    "rarefriend-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "rarefriend",
+    "crm",
+    "contacts",
+    "notes",
+    "calendar",
+    "linkedin",
+    "google-calendar",
+    "microsoft-outlook",
+    "ai",
+    "claude",
+    "cursor",
+    "llm",
+    "agent",
+    "stdio"
+  ],
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Whitefield-Labs/rarefriend-mcp.git"
+  },
+  "homepage": "https://rarefriend.com",
+  "bugs": {
+    "url": "https://github.com/Whitefield-Labs/rarefriend-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/registry/main/schema/server.schema.json",
+  "id": "io.github.whitefield-labs/rarefriend-crm",
+  "name": "Rarefriend CRM",
+  "description": "Personal CRM tools for Claude and other MCP clients. Search, create, and update contacts; manage notes and tags; sync Google and Microsoft calendars; bulk import contacts.",
+  "version": "1.0.2",
+  "license": "AGPL-3.0",
+  "homepage": "https://rarefriend.com",
+  "source": {
+    "type": "github",
+    "owner": "Whitefield-Labs",
+    "repo": "rarefriend-mcp"
+  },
+  "packages": [
+    {
+      "registry_name": "npm",
+      "name": "@rarefriend-ai/mcp",
+      "version": "1.0.2",
+      "runtime_arguments": []
+    }
+  ],
+  "remotes": [
+    {
+      "transport_type": "http",
+      "url": "https://rarefriend.com/api/mcp"
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "categories": ["crm", "productivity", "calendar", "contacts"],
+  "tags": ["crm", "contacts", "calendar", "google", "microsoft", "productivity", "ai-assistant"]
+}
