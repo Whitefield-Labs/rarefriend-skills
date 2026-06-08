@@ -1,5 +1,5 @@
 ---
-name: rarefriend-personal-network-manager
+name: personal-network-manager
 description: >
   Personal CRM powered by Rarefriend — manage contacts, notes, tags, Google Calendar,
   Microsoft Outlook contacts and calendar, and bulk import. Use when the user wants to:
@@ -230,7 +230,7 @@ get_integration_sync_status(integration)
 
 Users who want a narrower skill for a specific use case can install these instead of (or alongside) this one:
 
-- `npx skills add rarefriend-google-contacts` — contacts, notes, tags, Google Contacts sync
-- `npx skills add rarefriend-google-calendar` — Google Calendar scheduling
-- `npx skills add rarefriend-microsoft-contact-calendar-management` — Microsoft Outlook contacts and calendar
-- `npx skills add rarefriend-linkedin-connection-management` — manage and search LinkedIn-synced connections
+- `npx skills add google-contacts` — contacts, notes, tags, Google Contacts sync
+- `npx skills add google-calendar` — Google Calendar scheduling
+- `npx skills add microsoft-contact-calendar-management` — Microsoft Outlook contacts and calendar
+- `npx skills add linkedin-connection-management` — manage and search LinkedIn-synced connections

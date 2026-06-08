@@ -1,5 +1,5 @@
 ---
-name: rarefriend-microsoft-contact-calendar-management-email
+name: microsoft-email
 description: >
   Search and browse Microsoft Outlook emails from your AI assistant using Rarefriend.
   Use when the user wants to: check recent Outlook emails, search for an email by subject
@@ -138,8 +138,8 @@ get_integration_sync_status("microsoft_email")
 
 ## Other capabilities (outside this skill)
 
-- **Outlook contacts and calendar** — search Outlook contacts, schedule Teams meetings. Install `rarefriend-microsoft-contact-calendar-management`.
-- **Google Contacts and Calendar** — Install `rarefriend-google-contacts` and `rarefriend-google-calendar`.
+- **Outlook contacts and calendar** — search Outlook contacts, schedule Teams meetings. Install `microsoft-contact-calendar-management`.
+- **Google Contacts and Calendar** — Install `google-contacts` and `google-calendar`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Go to rarefriend.com → Settings → Integrations → LinkedIn.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
-- **Full feature set in one skill** — install `rarefriend-personal-network-manager`.
+- **Full feature set in one skill** — install `personal-network-manager`.
