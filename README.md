@@ -1,87 +1,53 @@
-# @rarefriend-ai/mcp
+# Rarefriend Skills
 
-Stdio MCP proxy for [Rarefriend CRM](https://rarefriend.com). Bridges any stdio MCP client (Claude Desktop, Cursor, Claude Code CLI, any agent framework) to the Rarefriend HTTP MCP server using OAuth `client_credentials` — no browser needed.
+Claude Code skills for [Rarefriend](https://rarefriend.com) — your personal CRM.
+
+Each skill is a focused SKILL.md that teaches your AI assistant a specific Rarefriend capability. Install only what you need, or install all of them.
+
+## Available skills
+
+| Skill                                              | What it does                                       |
+| -------------------------------------------------- | -------------------------------------------------- |
+| `rarefriend-personal-network-manager`              | Full CRM — contacts, notes, tags, all integrations |
+| `rarefriend-linkedin-connection-management`        | Search and manage LinkedIn-synced connections      |
+| `rarefriend-google-calendar`                       | Google Calendar scheduling and availability        |
+| `rarefriend-google-contacts`                       | Google Contacts sync and management                |
+| `rarefriend-microsoft-contact-calendar-management` | Microsoft Outlook contacts and calendar            |
+| `rarefriend-microsoft-email`                       | Microsoft email search and management              |
 
 ## Install
 
-No install step. Use directly via `npx`:
+**All skills:**
 
 ```bash
-npx -y @rarefriend-ai/mcp
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-personal-network-manager
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-linkedin-connection-management
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-google-calendar
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-google-contacts
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-microsoft-contact-calendar-management
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-microsoft-email
 ```
 
-## Get credentials
-
-Go to **Rarefriend → Settings → Integrations → MCP / AI Agent**, click **Manage → Generate OAuth Client**. Copy the client ID and secret (shown once).
-
-## Configure your client
-
-### Claude Desktop
-
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
-
-```json
-{
-  "mcpServers": {
-    "rarefriend": {
-      "command": "npx",
-      "args": ["-y", "@rarefriend-ai/mcp"],
-      "env": {
-        "RAREFRIEND_CLIENT_ID": "your-client-id",
-        "RAREFRIEND_CLIENT_SECRET": "your-client-secret"
-      }
-    }
-  }
-}
-```
-
-### Cursor
-
-Edit `.cursor/mcp.json` in your project or `~/.cursor/mcp.json` globally:
-
-```json
-{
-  "mcpServers": {
-    "rarefriend": {
-      "command": "npx",
-      "args": ["-y", "@rarefriend-ai/mcp"],
-      "env": {
-        "RAREFRIEND_CLIENT_ID": "your-client-id",
-        "RAREFRIEND_CLIENT_SECRET": "your-client-secret"
-      }
-    }
-  }
-}
-```
-
-### Claude Code CLI
+**Just the main skill (recommended starting point):**
 
 ```bash
-claude mcp add rarefriend npx -- -y @rarefriend-ai/mcp \
-  -e RAREFRIEND_CLIENT_ID=your-client-id \
-  -e RAREFRIEND_CLIENT_SECRET=your-client-secret
+npx skills add Whitefield-Labs/rarefriend-skills --skill rarefriend-personal-network-manager
 ```
 
-## Environment variables
+> **Note:** The `--all` flag installs only the first skill due to a known CLI bug ([#1015](https://github.com/anthropics/claude-code/issues/1015)). Use `--skill <name>` for each one until the bug is fixed.
 
-| Variable                   | Required | Description                                  |
-| -------------------------- | -------- | -------------------------------------------- |
-| `RAREFRIEND_CLIENT_ID`     | yes      | OAuth client ID from Rarefriend settings     |
-| `RAREFRIEND_CLIENT_SECRET` | yes      | OAuth client secret from Rarefriend settings |
+## Requirements
 
-## How it works
+You need the Rarefriend MCP connected to your AI client first:
 
-1. On start, requests an OAuth access token via `client_credentials` grant at `/api/auth/oauth2/token` with RFC 8707 `resource` indicator.
-2. Connects to the remote HTTP MCP server at `/api/mcp` with the token as a Bearer header.
-3. Spawns a local stdio MCP server that proxies `tools/list` and `tools/call` to the remote server.
-4. Refreshes the token automatically 60 seconds before expiry (reconnects the remote transport with the fresh token).
+```bash
+# Claude Code
+claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your-id -e RAREFRIEND_CLIENT_SECRET=your-secret -- npx -y @rarefriend-ai/mcp
+```
 
-## Security
+Get credentials at [rarefriend.com](https://rarefriend.com) → Settings → Integrations → MCP.
 
-- Credentials are read from environment variables only. Never stored in files.
-- Tokens are held in process memory only and expire on process exit.
-- Scoped to `workspace:read` by default; write scopes are enabled server-side based on the client's configured permissions.
-- No outbound network calls beyond `https://rarefriend.com`.
+For Cursor and Claude Desktop setup, see the [MCP repo](https://github.com/Whitefield-Labs/rarefriend-mcp).
 
 ## License
 
