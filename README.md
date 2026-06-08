@@ -1,8 +1,10 @@
 # Rarefriend Skills
 
-Claude Code skills for [Rarefriend](https://rarefriend.com) — your personal CRM.
+Cross-agent skills for [Rarefriend](https://rarefriend.com) — your personal CRM.
 
-Each skill is a focused SKILL.md that teaches your AI assistant a specific Rarefriend capability. Install only what you need, or install all of them.
+Works with **Claude Code**, **Cursor**, **Codex**, **OpenClaw**, **Gemini CLI**, and any client that supports the [Agent Skills](https://agentskills.io/specification) format (`SKILL.md` + MCP).
+
+Each skill is a focused `SKILL.md` that teaches your AI assistant a specific Rarefriend capability. Install only what you need, or install all six.
 
 ## Available skills
 
@@ -15,39 +17,49 @@ Each skill is a focused SKILL.md that teaches your AI assistant a specific Raref
 | `schedule-with-outlook`            | Microsoft Outlook contacts and calendar            |
 | `find-outlook-emails`              | Microsoft email search and management              |
 
-## Install
+## Install skills
+
+Use the [skills CLI](https://skills.sh) (works across supported agents):
 
 **All skills:**
 
 ```bash
-npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager
-npx skills add Whitefield-Labs/rarefriend-skills --skill manage-linkedin-network
-npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-google-calendar
-npx skills add Whitefield-Labs/rarefriend-skills --skill organize-google-contacts
-npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-outlook
-npx skills add Whitefield-Labs/rarefriend-skills --skill find-outlook-emails
+npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager -y
+npx skills add Whitefield-Labs/rarefriend-skills --skill manage-linkedin-network -y
+npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-google-calendar -y
+npx skills add Whitefield-Labs/rarefriend-skills --skill organize-google-contacts -y
+npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-outlook -y
+npx skills add Whitefield-Labs/rarefriend-skills --skill find-outlook-emails -y
 ```
 
 **Just the main skill (recommended starting point):**
 
 ```bash
-npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager
+npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager -y
 ```
 
 > **Note:** The `--all` flag installs only the first skill due to a known CLI bug ([#1015](https://github.com/anthropics/claude-code/issues/1015)). Use `--skill <name>` for each one until the bug is fixed.
 
-## Requirements
+**Cursor:** skills install into `.cursor/skills/` or `~/.cursor/skills/` depending on scope.
 
-You need the Rarefriend MCP connected to your AI client first:
+**Claude Code / Codex:** global install via `npx skills add …` (same command).
 
-```bash
-# Claude Code
-claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your-id -e RAREFRIEND_CLIENT_SECRET=your-secret -- npx -y @rarefriend-ai/mcp
-```
+**OpenClaw:** skills include `metadata.openclaw` blocks for ClawHub; install via ClawHub or copy from this repo.
+
+## Requirements — Rarefriend MCP
+
+Skills call Rarefriend via MCP. Connect once per client:
+
+| Client                             | Setup                                                                                                                            |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Claude Code / Codex**            | `claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your-id -e RAREFRIEND_CLIENT_SECRET=your-secret -- npx -y @rarefriend-ai/mcp` |
+| **Cursor**                         | Add to `~/.cursor/mcp.json` — see [MCP repo](https://github.com/Whitefield-Labs/rarefriend-mcp)                                  |
+| **Claude Desktop**                 | Add to `claude_desktop_config.json` — see [MCP repo](https://github.com/Whitefield-Labs/rarefriend-mcp)                          |
+| **OpenClaw / Gemini CLI / others** | Run `npx -y @rarefriend-ai/mcp` with `RAREFRIEND_CLIENT_ID` and `RAREFRIEND_CLIENT_SECRET` in env                                |
 
 Get credentials at [rarefriend.com](https://rarefriend.com) → Settings → Integrations → MCP.
 
-For Cursor and Claude Desktop setup, see the [MCP repo](https://github.com/Whitefield-Labs/rarefriend-mcp).
+Per-skill setup details: `skills/<name>/references/SETUP.md`.
 
 ## License
 
