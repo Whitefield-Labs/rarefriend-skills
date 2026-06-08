@@ -1,12 +1,14 @@
 ---
 name: microsoft-email
 description: >
-  Search and browse Microsoft Outlook emails from your AI assistant using Rarefriend.
-  Use when the user wants to: check recent Outlook emails, search for an email by subject
-  or sender, find emails from a specific person, look up what was discussed over email,
-  or connect their Microsoft Outlook email account. Triggers on: Outlook email, Microsoft
-  email, inbox, email from, search email, recent emails, Outlook inbox, check my email,
-  find email, email history.
+  Search your Microsoft Outlook inbox and cross-reference emails with your contact history
+  — find any email instantly and see full relationship context alongside it via Rarefriend.
+  Use when the user wants to: check recent Outlook emails, search for an email by subject or
+  sender, find emails from a specific person, look up what was discussed over email, cross-
+  reference email threads with CRM notes, or connect their Microsoft Outlook email account.
+  Triggers on: Outlook email, Microsoft email, inbox, email from, search email, recent emails,
+  Outlook inbox, check my email, find email, email history, what did they say, email thread,
+  did I hear back, follow up email.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|search|list|connect]'
@@ -27,11 +29,14 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. Connecting Microsoft Outlook email lets you search your inbox, find emails from specific people, and cross-reference conversations with your contact history — notes, tags, and relationship context all in one place.
+Rarefriend brings your Outlook inbox into your contact network — search emails, see who said what, and connect every thread to the relationship notes and context already in your CRM.
 
 Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 

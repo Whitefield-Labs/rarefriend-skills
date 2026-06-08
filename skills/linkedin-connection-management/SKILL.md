@@ -1,13 +1,15 @@
 ---
 name: linkedin-connection-management
 description: >
-  Manage your LinkedIn network as a personal CRM using Rarefriend. Use when the user wants to:
-  search their LinkedIn connections, find who they know at a company, add notes after LinkedIn
-  conversations or networking events, tag connections, track warm intros, recall context before
-  reaching out, prepare for a meeting with a connection, or set up LinkedIn sync. Triggers on:
-  LinkedIn, connections, my network, LinkedIn contacts, who do I know at, networking,
-  professional network, warm intro, notes about someone, tag contacts, relationship context,
-  find contact, network management, LinkedIn sync.
+  Turn your LinkedIn network into a searchable, annotated CRM — find who you know at any
+  company, prep for meetings, and never lose context on a connection again. Powered by
+  Rarefriend. Use when the user wants to: search LinkedIn connections, find who they know
+  at a company, add notes after LinkedIn conversations or networking events, tag connections,
+  track warm intros, recall context before reaching out, prepare for a meeting with a
+  connection, who should I reach out to, or set up LinkedIn sync. Triggers on: LinkedIn,
+  connections, my network, LinkedIn contacts, who do I know at, networking, professional
+  network, warm intro, notes about someone, tag contacts, relationship context, find contact,
+  network management, LinkedIn sync, intro, reach out, who to contact.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|sync|search|notes|tags|connect]'
@@ -28,11 +30,14 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. It syncs your LinkedIn connections and brings them together with contacts from Google, Microsoft, and your phone — so you can add notes after every conversation, tag and organise people, and instantly recall who someone is, how you met, and what you last discussed.
+Rarefriend syncs your LinkedIn connections and makes them fully searchable — with notes, tags, and relationship history so you always know who someone is, how you met, and what you last discussed.
 
 Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 

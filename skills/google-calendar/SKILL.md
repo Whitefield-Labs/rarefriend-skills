@@ -1,12 +1,14 @@
 ---
 name: google-calendar
 description: >
-  Manage Google Calendar from your AI assistant using Rarefriend. Use when the user
-  wants to: schedule a meeting, check what's on their calendar, find a free slot, reschedule
-  or cancel an event, block focus time, find available time for multiple attendees, or
-  look up someone's contact details before creating an event. Triggers on: schedule,
-  calendar, meeting, event, Google Calendar, free slot, available time, book, reschedule,
-  cancel event, block time, standup, call, appointment.
+  Schedule meetings, find free time, and manage Google Calendar — all connected to your
+  contact network via Rarefriend. Resolve attendees by name, log notes after calls, and
+  never double-book again. Use when the user wants to: schedule a meeting, check what's
+  on their calendar, find a free slot, reschedule or cancel an event, block focus time,
+  find available time for multiple attendees, look up a contact before creating an event,
+  or log notes after a meeting. Triggers on: schedule, calendar, meeting, event, Google
+  Calendar, free slot, available time, book, reschedule, cancel event, block time, standup,
+  call, appointment, what's on my calendar, am I free, set up a call, when are we meeting.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|schedule|find-time|reschedule|cancel|connect]'
@@ -27,11 +29,14 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. It brings contacts from Google, Microsoft, LinkedIn, and your phone into one place — and lets you capture notes after meetings, tag people, and recall exactly who someone is and what you last discussed. This skill connects Google Calendar to that network so you can schedule meetings with your contacts and log context after every call.
+Rarefriend connects your calendar to your contact network — schedule meetings with people you know, log context after every call, and keep your professional relationships fully searchable.
 
 Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 

@@ -1,13 +1,14 @@
 ---
 name: microsoft-contact-calendar-management
 description: >
-  Manage Microsoft Outlook contacts and calendar from your AI assistant using Rarefriend.
-  Use when the user wants to: search Outlook contacts, schedule Outlook or Teams meetings,
-  check their Outlook calendar, find free time, reschedule or cancel Outlook events,
-  add notes about people, tag and organise their Microsoft network, or connect their
-  Microsoft account. Triggers on: Outlook, Microsoft, Teams, Exchange, Office 365,
-  Microsoft contacts, Outlook calendar, schedule Teams meeting, book meeting, free slot,
-  contact, notes, tags.
+  Manage Microsoft Outlook contacts and calendar from your AI assistant — search contacts,
+  schedule Teams meetings, find free time, and keep relationship notes all in one place via
+  Rarefriend. Use when the user wants to: search Outlook contacts, schedule an Outlook or
+  Teams meeting, check their Outlook calendar, find free time, reschedule or cancel Outlook
+  events, add notes about people, tag and organise their Microsoft network, or connect their
+  Microsoft account. Triggers on: Outlook, Microsoft, Teams, Exchange, Office 365, Microsoft
+  contacts, Outlook calendar, schedule Teams meeting, book meeting, free slot, Outlook contact,
+  notes, tags, Microsoft calendar, Teams call, Office meeting.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|contacts|calendar|notes|tags|connect]'
@@ -28,11 +29,14 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. It brings contacts from Microsoft Outlook, Google, LinkedIn, and your phone into one place — and lets you capture notes after meetings and calls, tag and organise people, and instantly recall who someone is and what you last discussed. This skill connects Microsoft Outlook contacts and calendar to that network.
+Rarefriend connects your Microsoft Outlook contacts and calendar to a full relationship layer — notes after every meeting, tags to organise your network, and instant recall on anyone in your Microsoft ecosystem.
 
 Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 

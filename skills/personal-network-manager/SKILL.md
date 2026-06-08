@@ -1,15 +1,16 @@
 ---
 name: personal-network-manager
 description: >
-  Personal CRM powered by Rarefriend — manage contacts, notes, tags, Google Calendar,
-  Microsoft Outlook contacts and calendar, and bulk import. Use when the user wants to:
-  search their professional network, find who they know at a company, add meeting notes
-  or call summaries, tag and organise contacts, schedule or check calendar events, import
-  LinkedIn connections, connect Google Contacts or Microsoft Outlook, track relationship
-  context, log an interaction, or do anything related to contacts, networking, or
-  relationship management. Triggers on: contact, contacts, CRM, notes, my network,
-  schedule, calendar, LinkedIn, Google Contacts, Outlook, bulk import, who do I know,
-  who do I know at, relationship, networking, person, people, meeting notes.
+  Never forget a person again — search your entire professional network, recall exactly
+  what you discussed, and always know who you know at any company. Powered by Rarefriend
+  personal CRM. Use when the user wants to: search contacts, find who they know at a company,
+  add meeting notes or call summaries, tag and organise contacts, schedule or check calendar
+  events, import LinkedIn connections, bulk import contacts, connect Google Contacts or
+  Microsoft Outlook, track relationship context, log an interaction, or do anything related
+  to contacts, networking, or relationship management. Triggers on: contact, contacts, CRM,
+  notes, my network, schedule, calendar, LinkedIn, Google Contacts, Outlook, bulk import,
+  who do I know, who do I know at, relationship, networking, person, people, meeting notes,
+  who should I reach out to, warm intro, remind me about, what do I know about.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|contacts|notes|tags|calendar|import|integrations]'
@@ -30,15 +31,18 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. It brings together contacts from Google, Microsoft, LinkedIn, and your phone in one place — and lets you capture notes after meetings and calls, tag and organise your network, and instantly recall who someone is, what you last discussed, and why they matter. Everything you add stays searchable so you never lose context on a person again.
+Rarefriend remembers your professional network so you don't have to — contacts from Google, LinkedIn, Microsoft, and your phone in one place, with notes, tags, and full relationship history always at your fingertips.
 
-Access Rarefriend from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI assistant on WhatsApp.
+Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
-**LinkedIn sync** requires the Rarefriend Chrome extension — set it up at rarefriend.com → Settings → Integrations → LinkedIn. Once synced, all your LinkedIn connections are searchable here.
+**LinkedIn sync** requires the Rarefriend Chrome extension — set it up at rarefriend.com → Settings → Integrations → LinkedIn.
 
 ---
 

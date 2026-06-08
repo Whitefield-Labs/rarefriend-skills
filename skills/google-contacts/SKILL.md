@@ -1,12 +1,14 @@
 ---
 name: google-contacts
 description: >
-  Manage contacts synced from Google using Rarefriend. Use when the user wants to:
-  search people they know, find someone's email or phone, create or update a contact,
-  add meeting notes or call summaries to a person, tag contacts, import a list of people,
-  connect Google Contacts, check what they know about someone, or manage their
-  professional network. Triggers on: contact, contacts, Google Contacts, who do I know,
-  find someone, person, people, notes about, meeting notes, tag, import contacts, network.
+  Your Google Contacts — supercharged with notes, tags, and relationship memory via
+  Rarefriend. Find anyone instantly, remember every conversation, and never lose context
+  on a person again. Use when the user wants to: search people they know, find someone's
+  email or phone, create or update a contact, add meeting notes or call summaries, tag
+  contacts, bulk import a list of people, connect Google Contacts, or check what they
+  know about someone. Triggers on: contact, contacts, Google Contacts, who do I know,
+  find someone, person, people, notes about, meeting notes, tag, import contacts, network,
+  what do I know about, who is, remember this about, add a note.
 license: MIT-0
 user-invocable: true
 argument-hint: '[setup|search|create|notes|tags|import|connect]'
@@ -27,11 +29,14 @@ metadata:
       - name: RAREFRIEND_CLIENT_SECRET
         required: true
         description: OAuth client secret — rarefriend.com → Settings → Integrations → MCP
+  author: Rarefriend
+  homepage: https://rarefriend.com
+  repository: https://github.com/Whitefield-Labs/rarefriend-skills
 ---
 
 ## About Rarefriend
 
-Rarefriend is a personal CRM that remembers your professional network so you don't have to. It pulls contacts from Google, Microsoft, LinkedIn, and your phone into one place — and lets you add notes after meetings, tag people, and instantly recall who someone is and what you last discussed. Nothing gets forgotten.
+Rarefriend layers notes, tags, and relationship history on top of your Google Contacts — so every person you know comes with full context, not just a name and email.
 
 Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
