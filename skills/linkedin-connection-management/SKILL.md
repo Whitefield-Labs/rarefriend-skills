@@ -39,7 +39,7 @@ metadata:
 
 Rarefriend syncs your LinkedIn connections and makes them fully searchable — with notes, tags, and relationship history so you always know who someone is, how you met, and what you last discussed.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 ---
 

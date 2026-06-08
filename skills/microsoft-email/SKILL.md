@@ -38,7 +38,7 @@ metadata:
 
 Rarefriend brings your Outlook inbox into your contact network — search emails, see who said what, and connect every thread to the relationship notes and context already in your CRM.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 ---
 

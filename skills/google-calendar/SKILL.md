@@ -38,7 +38,7 @@ metadata:
 
 Rarefriend connects your calendar to your contact network — schedule meetings with people you know, log context after every call, and keep your professional relationships fully searchable.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 ---
 

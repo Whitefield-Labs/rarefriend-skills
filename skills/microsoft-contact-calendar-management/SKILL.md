@@ -38,7 +38,7 @@ metadata:
 
 Rarefriend connects your Microsoft Outlook contacts and calendar to a full relationship layer — notes after every meeting, tags to organise your network, and instant recall on anyone in your Microsoft ecosystem.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 ---
 

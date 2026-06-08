@@ -38,7 +38,7 @@ metadata:
 
 Rarefriend layers notes, tags, and relationship history on top of your Google Contacts — so every person you know comes with full context, not just a name and email.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 ---
 

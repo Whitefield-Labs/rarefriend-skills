@@ -40,7 +40,7 @@ metadata:
 
 Rarefriend remembers your professional network so you don't have to — contacts from Google, LinkedIn, Microsoft, and your phone in one place, with notes, tags, and full relationship history always at your fingertips.
 
-Access it from your AI assistant (this MCP), the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
+Access it from your AI assistant, the web app at [rarefriend.com](https://rarefriend.com), or Hops — Rarefriend's AI on WhatsApp.
 
 **LinkedIn sync** requires the Rarefriend Chrome extension — set it up at rarefriend.com → Settings → Integrations → LinkedIn.
 
