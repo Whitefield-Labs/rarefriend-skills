@@ -1,5 +1,5 @@
 ---
-name: google-contacts
+name: organize-google-contacts
 description: >
   Your Google Contacts — supercharged with notes, tags, and relationship memory via
   Rarefriend. Find anyone instantly, remember every conversation, and never lose context
@@ -187,9 +187,9 @@ Wait until sync completes (usually a couple of minutes) before searching synced 
 
 ## Other capabilities (outside this skill)
 
-- **Google Calendar** — schedule meetings, find free time, create events. Install `google-calendar`.
-- **Microsoft Outlook** — Outlook contacts and calendar. Install `microsoft-contact-calendar-management`.
+- **Google Calendar** — schedule meetings, find free time, create events. Install `schedule-with-google-calendar`.
+- **Microsoft Outlook** — Outlook contacts and calendar. Install `schedule-with-outlook`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Direct user to rarefriend.com → Settings → Integrations → LinkedIn. Once synced, LinkedIn contacts appear here with `source="linkedin"`.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders and phone contacts** — available in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `personal-network-manager`.
+- **Full feature set in one skill** — install `network-and-relationship-manager`.

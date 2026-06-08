@@ -1,5 +1,5 @@
 ---
-name: microsoft-email
+name: find-outlook-emails
 description: >
   Search your Microsoft Outlook inbox and cross-reference emails with your contact history
   — find any email instantly and see full relationship context alongside it via Rarefriend.
@@ -143,8 +143,8 @@ get_integration_sync_status("microsoft_email")
 
 ## Other capabilities (outside this skill)
 
-- **Outlook contacts and calendar** — search Outlook contacts, schedule Teams meetings. Install `microsoft-contact-calendar-management`.
-- **Google Contacts and Calendar** — Install `google-contacts` and `google-calendar`.
+- **Outlook contacts and calendar** — search Outlook contacts, schedule Teams meetings. Install `schedule-with-outlook`.
+- **Google Contacts and Calendar** — Install `organize-google-contacts` and `schedule-with-google-calendar`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Go to rarefriend.com → Settings → Integrations → LinkedIn.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
-- **Full feature set in one skill** — install `personal-network-manager`.
+- **Full feature set in one skill** — install `network-and-relationship-manager`.

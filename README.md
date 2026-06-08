@@ -6,32 +6,32 @@ Each skill is a focused SKILL.md that teaches your AI assistant a specific Raref
 
 ## Available skills
 
-| Skill                                   | What it does                                       |
-| --------------------------------------- | -------------------------------------------------- |
-| `personal-network-manager`              | Full CRM — contacts, notes, tags, all integrations |
-| `linkedin-connection-management`        | Search and manage LinkedIn-synced connections      |
-| `google-calendar`                       | Google Calendar scheduling and availability        |
-| `google-contacts`                       | Google Contacts sync and management                |
-| `microsoft-contact-calendar-management` | Microsoft Outlook contacts and calendar            |
-| `microsoft-email`                       | Microsoft email search and management              |
+| Skill                              | What it does                                       |
+| ---------------------------------- | -------------------------------------------------- |
+| `network-and-relationship-manager` | Full CRM — contacts, notes, tags, all integrations |
+| `manage-linkedin-network`          | Search and manage LinkedIn-synced connections      |
+| `schedule-with-google-calendar`    | Google Calendar scheduling and availability        |
+| `organize-google-contacts`         | Google Contacts sync and management                |
+| `schedule-with-outlook`            | Microsoft Outlook contacts and calendar            |
+| `find-outlook-emails`              | Microsoft email search and management              |
 
 ## Install
 
 **All skills:**
 
 ```bash
-npx skills add Whitefield-Labs/rarefriend-skills --skill personal-network-manager
-npx skills add Whitefield-Labs/rarefriend-skills --skill linkedin-connection-management
-npx skills add Whitefield-Labs/rarefriend-skills --skill google-calendar
-npx skills add Whitefield-Labs/rarefriend-skills --skill google-contacts
-npx skills add Whitefield-Labs/rarefriend-skills --skill microsoft-contact-calendar-management
-npx skills add Whitefield-Labs/rarefriend-skills --skill microsoft-email
+npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager
+npx skills add Whitefield-Labs/rarefriend-skills --skill manage-linkedin-network
+npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-google-calendar
+npx skills add Whitefield-Labs/rarefriend-skills --skill organize-google-contacts
+npx skills add Whitefield-Labs/rarefriend-skills --skill schedule-with-outlook
+npx skills add Whitefield-Labs/rarefriend-skills --skill find-outlook-emails
 ```
 
 **Just the main skill (recommended starting point):**
 
 ```bash
-npx skills add Whitefield-Labs/rarefriend-skills --skill personal-network-manager
+npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationship-manager
 ```
 
 > **Note:** The `--all` flag installs only the first skill due to a known CLI bug ([#1015](https://github.com/anthropics/claude-code/issues/1015)). Use `--skill <name>` for each one until the bug is fixed.

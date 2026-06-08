@@ -1,5 +1,5 @@
 ---
-name: linkedin-connection-management
+name: manage-linkedin-network
 description: >
   Turn your LinkedIn network into a searchable, annotated CRM — find who you know at any
   company, prep for meetings, and never lose context on a connection again. Powered by
@@ -218,11 +218,11 @@ connect_integration("microsoft_calendar")
 ## Other capabilities (outside this skill)
 
 - **LinkedIn sync setup** — must be done in the web app via the Chrome extension (rarefriend.com → Settings → Integrations → LinkedIn). The extension syncs connections automatically; re-run Sync Now to refresh.
-- **Google Contacts and Calendar** — install `google-contacts` and `google-calendar` to schedule meetings with connections and cross-reference networks.
-- **Microsoft Outlook** — install `microsoft-contact-calendar-management`.
+- **Google Contacts and Calendar** — install `organize-google-contacts` and `schedule-with-google-calendar` to schedule meetings with connections and cross-reference networks.
+- **Microsoft Outlook** — install `schedule-with-outlook`.
 - **Hops on WhatsApp** — same contacts and notes accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders** — set follow-up reminders on contacts in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `personal-network-manager`.
+- **Full feature set in one skill** — install `network-and-relationship-manager`.
 
 ## References
 

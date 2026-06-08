@@ -1,5 +1,5 @@
 ---
-name: google-calendar
+name: schedule-with-google-calendar
 description: >
   Schedule meetings, find free time, and manage Google Calendar — all connected to your
   contact network via Rarefriend. Resolve attendees by name, log notes after calls, and
@@ -204,9 +204,9 @@ get_integration_sync_status("google_calendar")
 
 ## Other capabilities (outside this skill)
 
-- **Contact management** — create, update, tag, and bulk import contacts. Install `google-contacts`.
-- **Microsoft Outlook** — Outlook calendar and contacts. Install `microsoft-contact-calendar-management`.
+- **Contact management** — create, update, tag, and bulk import contacts. Install `organize-google-contacts`.
+- **Microsoft Outlook** — Outlook calendar and contacts. Install `schedule-with-outlook`.
 - **LinkedIn sync** — requires the Rarefriend Chrome extension. Direct user to rarefriend.com → Settings → Integrations → LinkedIn. Once synced, LinkedIn connections are searchable as attendees.
 - **Hops on WhatsApp** — same calendar-linked contacts accessible via Rarefriend's WhatsApp AI assistant.
 - **Reminders** — set follow-up reminders on contacts in the web app at rarefriend.com.
-- **Full feature set in one skill** — install `personal-network-manager`.
+- **Full feature set in one skill** — install `network-and-relationship-manager`.

@@ -1,5 +1,5 @@
 ---
-name: personal-network-manager
+name: network-and-relationship-manager
 description: >
   Never forget a person again — search your entire professional network, recall exactly
   what you discussed, and always know who you know at any company. Powered by Rarefriend
