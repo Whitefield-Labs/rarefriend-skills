@@ -1,0 +1,29 @@
+{
+  "name": "rarefriend",
+  "version": "1.0.0",
+  "description": "Rarefriend personal CRM in Gemini CLI: search your network, log notes, tag contacts, and schedule with Google or Outlook.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "rarefriend": {
+      "command": "npx",
+      "args": ["-y", "@rarefriend-ai/mcp@1.0.3"],
+      "env": {
+        "RAREFRIEND_CLIENT_ID": "$RAREFRIEND_CLIENT_ID",
+        "RAREFRIEND_CLIENT_SECRET": "$RAREFRIEND_CLIENT_SECRET"
+      }
+    }
+  },
+  "settings": [
+    {
+      "name": "Rarefriend Client ID",
+      "description": "From rarefriend.com, Settings, Integrations, MCP",
+      "envVar": "RAREFRIEND_CLIENT_ID"
+    },
+    {
+      "name": "Rarefriend Client Secret",
+      "description": "Shown once when you create the client. Create a new one if you lost it.",
+      "envVar": "RAREFRIEND_CLIENT_SECRET",
+      "sensitive": true
+    }
+  ]
+}

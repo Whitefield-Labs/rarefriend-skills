@@ -6,7 +6,7 @@
 
 ```
 query?        string   — search terms (name, email, company, role)
-tags?         string[] — filter by tag (AND logic)
+tag?          string   — filter by a single tag (exact match)
 limit?        number   — results per page (default 20, max 100)
 offset?       number   — pagination offset
 searchMode?   enum     — 'all' | 'name' | 'company' | 'role' | 'email' | 'exact'
@@ -29,7 +29,7 @@ lastName?     string
 emails?       string[]
 phones?       string[] — E.164 format preferred
 company?      string
-role?         string
+currentRole?  string
 location?     string
 bio?          string
 ```
@@ -56,7 +56,7 @@ contactId     string   — required (soft delete, recoverable)
 ```
 contactId     string   — required (create only)
 noteId        string   — required (update/delete/get/pin only)
-content       string   — markdown supported
+body          string   — markdown supported
 isPinned?     boolean
 ```
 
@@ -112,10 +112,11 @@ transparency? enum     — 'opaque' (busy) | 'transparent' (free)
 ### find_available_google_time
 
 ```
-durationMinutes    number   — required
-preferredDays?     string[] — e.g. ["Monday", "Tuesday"]
-preferredTimeRange? object  — { start: "09:00", end: "17:00" }
-attendeeEmails?    string[]
+startDate          string   — required, ISO 8601 with the user's UTC offset, e.g. 2026-11-20T09:00:00+05:30
+endDate            string   — required, ISO 8601 with the user's UTC offset
+duration           number   — required, minutes (15–480)
+workingHoursOnly?  boolean  — weekdays 09:00-17:00 only; leave unset for weekend or evening searches
+# checks the connected user's own calendar only — not other attendees'
 ```
 
 ### search_google_calendar_events / search_microsoft_calendar_events
@@ -130,8 +131,9 @@ timeMax?      string   — ISO 8601
 
 ```
 eventId       string   — required
-startTime     string   — ISO 8601
-endTime       string   — ISO 8601
+newStartTime  string   — ISO 8601
+newEndTime    string   — ISO 8601
+message?      string   — Microsoft: prepended to the event body as [RESCHEDULED: ...]. Google: accepted but not delivered
 ```
 
 ---
@@ -165,17 +167,18 @@ location?     string
 ### find_available_microsoft_time
 
 ```
-durationMinutes     number   — required
-preferredDays?      string[] — e.g. ["Monday", "Tuesday"]
-preferredTimeRange? object   — { start: "09:00", end: "17:00" }
-attendeeEmails?     string[]
+startDate           string   — required, ISO 8601 with the user's UTC offset, e.g. 2026-11-20T09:00:00+05:30
+endDate             string   — required, ISO 8601 with the user's UTC offset
+duration            number   — required, minutes (15–480)
+workingHoursOnly?   boolean  — weekdays 09:00-17:00 only; leave unset for weekend or evening searches
+# checks the connected user's own calendar only — not other attendees'
 ```
 
 ### get_upcoming_microsoft_events
 
 ```
-limit?        number   — default 10
-days?         number   — look-ahead window in days
+days?         number   — look-ahead window in days (default 7, max 365)
+maxResults?   number   — default 20, max 100
 ```
 
 ### cancel_microsoft_event
@@ -221,6 +224,7 @@ contacts      array    — required, 1–50 items
 ```
 
 Response: `{ summary: { requested, created, failed }, results[], quota? }`
+A result may include `droppedPhones` and `warning` when invalid phone numbers were ignored — phones must be in international format (e.g. `+14155552671`).
 On `quota_exceeded`: advise user to upgrade at rarefriend.com.
 
 ---

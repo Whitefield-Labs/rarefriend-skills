@@ -1,0 +1,25 @@
+{
+  "name": "rarefriend",
+  "version": "1.0.0",
+  "description": "Rarefriend personal CRM in Claude: search your network, log notes, tag contacts, and schedule with Google or Outlook.",
+  "author": { "name": "Whitefield Labs", "url": "https://rarefriend.com" },
+  "homepage": "https://rarefriend.com",
+  "repository": "https://github.com/Whitefield-Labs/rarefriend-skills",
+  "license": "MIT-0",
+  "keywords": ["crm", "contacts", "calendar", "linkedin", "outlook", "google"],
+  "userConfig": {
+    "client_id": {
+      "type": "string",
+      "title": "Rarefriend Client ID",
+      "description": "From rarefriend.com → Settings → Integrations → MCP",
+      "required": true
+    },
+    "client_secret": {
+      "type": "string",
+      "title": "Rarefriend Client Secret",
+      "description": "Shown once when you create the client. Create a new one if you lost it.",
+      "required": true,
+      "sensitive": true
+    }
+  }
+}

@@ -48,6 +48,7 @@ Access it from your AI assistant, the web app at [rarefriend.com](https://rarefr
 
 1. Call `list_connected_integrations`.
    - **Tool not available → MCP not connected.** Present these steps inline to the user:
+     0. **Installed as the Rarefriend Claude plugin?** The server is already set up. Ask the user to run `/mcp` and check that `rarefriend` is connected; if it failed, update the Client ID and Secret with `/plugin configure rarefriend@rarefriend`, then run `/reload-plugins`. Skip the steps below.
      1. Sign in at [rarefriend.com](https://rarefriend.com) → **Settings → Integrations → MCP** → copy the Client ID and Client Secret
      2. **Claude Code / Codex:** run `claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your_id -e RAREFRIEND_CLIENT_SECRET=your_secret -- npx -y @rarefriend-ai/mcp`
      3. **Cursor:** add to `~/.cursor/mcp.json` under `mcpServers.rarefriend` with `command: npx`, `args: ["-y", "@rarefriend-ai/mcp"]`, and the two env vars
@@ -63,10 +64,10 @@ Access it from your AI assistant, the web app at [rarefriend.com](https://rarefr
 ### Check upcoming events
 
 ```
-get_upcoming_google_events(limit?, days?)
+get_upcoming_google_events(days?, maxResults?)
 ```
 
-Default: next 10 events. Use `days` to narrow to "today" or "this week".
+Default: next 7 days, up to 20 events. Use `days` to narrow to "today" or "this week", and `maxResults` to cap the list.
 
 ### Search for specific events
 
@@ -79,17 +80,16 @@ Use when the user asks "find my meeting with X" or "what events do I have about 
 ### Find available time
 
 ```
-find_available_google_time(durationMinutes, preferredDays?,
-                            preferredTimeRange?, attendeeEmails?)
+find_available_google_time(startDate, endDate, duration, workingHoursOnly?)
 ```
 
-**Always call this before scheduling** to avoid conflicts. For multi-person meetings, pass `attendeeEmails` — the tool checks all attendees' availability.
+**Always call this before scheduling** to avoid conflicts. `startDate` and `endDate` are ISO 8601 and must include the user's UTC offset (for example `2026-11-20T09:00:00+05:30`; ask for their timezone if you don't know it, because without an offset the server reads the time in its own timezone); `duration` is in minutes (15–480). `workingHoursOnly` limits results to weekdays, 09:00 to 17:00, so leave it off for weekend or evening searches. It checks only the connected user's own calendar — it cannot see other attendees' availability, so confirm the time with them.
 
-If the user gives a name instead of an email, resolve it first:
+If the user gives a name instead of an email, resolve it first so the email is ready for the event's attendees:
 
 ```
 search_contacts("Alice Wang", searchMode="name")
-→ extract email → pass to find_available_google_time
+→ extract email → use it as an attendee in create_google_calendar_event
 ```
 
 **Source attribution:** The `search_contacts` response includes `sourceLabel` for each contact (e.g. "Google Contacts", "LinkedIn (extension)"). Mention this when presenting the attendee — e.g. _"Found Alice Wang in Google Contacts — scheduling with alice@example.com"_.
@@ -113,18 +113,18 @@ Use `transparency: 'opaque'` for real meetings. Use `'transparent'` for focus bl
 ### Reschedule and cancel
 
 ```
-reschedule_google_event(eventId, startTime, endTime)
+reschedule_google_event(eventId, newStartTime, newEndTime, message?)
 cancel_google_event(eventId)
 ```
 
-Use `search_google_calendar_events` to find the `eventId` first.
+Use `search_google_calendar_events` to find the `eventId` first. `message` is accepted but not delivered to attendees, so don't tell the user it was sent.
 
 ### Log notes after a meeting
 
 After any meeting, capture relationship context:
 
 ```
-create_note(contactId, content, isPinned?)
+create_note(contactId, body, isPinned?)
 search_notes(query)        — find past context before the next meeting
 get_recent_notes(limit?)   — see what's been discussed recently
 ```
@@ -158,24 +158,24 @@ get_integration_sync_status("google_calendar")
 **"Schedule a 30-min call with Alice next week"**
 
 1. `search_contacts("Alice", searchMode="name")` → get her email
-2. `find_available_google_time(30, preferredDays=["Monday","Tuesday","Wednesday"], attendeeEmails=[alice@email])`
+2. `find_available_google_time(startDate=<Monday 09:00>, endDate=<Wednesday 18:00>, duration=30, workingHoursOnly=true)`
 3. Confirm slot with user
 4. `create_google_calendar_event(title, startTime, endTime, attendees=[alice@email])`
 
 **"What's on my calendar this week?"**
 
-1. `get_upcoming_google_events(limit=20, days=7)`
+1. `get_upcoming_google_events(maxResults=20, days=7)`
 2. Summarise by day, highlight multi-attendee meetings
 
 **"Block tomorrow morning for deep work"**
 
-1. `find_available_google_time(120, preferredDays=["tomorrow"], preferredTimeRange={start:"09:00",end:"12:00"})`
+1. `find_available_google_time(startDate=<tomorrow 09:00>, endDate=<tomorrow 12:00>, duration=120)`
 2. `create_google_calendar_event(title="Deep work", ..., transparency="transparent")`
 
 **"Log notes after my call with Marcus"**
 
 1. `search_contacts("Marcus", searchMode="name")` → get contactId
-2. `create_note(contactId, content)`
+2. `create_note(contactId, body)`
 
 ---
 

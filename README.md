@@ -17,6 +17,17 @@ Each skill is a focused `SKILL.md` that teaches your AI assistant a specific Rar
 | `schedule-with-outlook`            | Microsoft Outlook contacts and calendar            |
 | `find-outlook-emails`              | Microsoft email search and management              |
 
+## Install as a Claude plugin
+
+For Claude Code, the plugin bundles all six skills and the Rarefriend connection in one install:
+
+```
+/plugin marketplace add Whitefield-Labs/rarefriend-skills
+/plugin install rarefriend@rarefriend
+```
+
+You are asked for your Rarefriend Client ID and Client Secret when the plugin is turned on. Create a full-access client in Rarefriend under **Settings → Integrations → MCP**.
+
 ## Install skills
 
 Use the [skills CLI](https://skills.sh) (works across supported agents):
@@ -45,6 +56,16 @@ npx skills add Whitefield-Labs/rarefriend-skills --skill network-and-relationshi
 **Claude Code / Codex:** global install via `npx skills add …` (same command).
 
 **OpenClaw:** skills include `metadata.openclaw` blocks for ClawHub; install via ClawHub or copy from this repo.
+
+## Install as a Gemini CLI extension
+
+For Gemini CLI, the extension bundles all six skills and the Rarefriend connection in one install:
+
+```bash
+gemini extensions install Whitefield-Labs/rarefriend-skills
+```
+
+Gemini asks for your Rarefriend Client ID and Client Secret during the install, and keeps the secret in your system keychain. Restart Gemini CLI, then check `/extensions list`, `/skills list` and `/mcp`. Create a full-access client under Settings → Integrations → MCP; a Read only client can search but cannot write. Change the credentials later with `gemini extensions config rarefriend`.
 
 ## Requirements — Rarefriend MCP
 

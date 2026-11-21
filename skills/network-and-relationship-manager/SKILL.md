@@ -54,6 +54,7 @@ Access it from your AI assistant, the web app at [rarefriend.com](https://rarefr
 
 1. Call `list_connected_integrations` with no arguments.
    - **If the tool is not available → MCP is not connected.** Present these steps inline to the user:
+     0. **Installed as the Rarefriend Claude plugin?** The server is already set up. Ask the user to run `/mcp` and check that `rarefriend` is connected; if it failed, update the Client ID and Secret with `/plugin configure rarefriend@rarefriend`, then run `/reload-plugins`. Skip the steps below.
      1. Sign in at [rarefriend.com](https://rarefriend.com) → **Settings → Integrations → MCP** → copy the Client ID and Client Secret
      2. **Claude Code / Codex:** run `claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your_id -e RAREFRIEND_CLIENT_SECRET=your_secret -- npx -y @rarefriend-ai/mcp`
      3. **Cursor:** add to `~/.cursor/mcp.json` under `mcpServers.rarefriend` with `command: npx`, `args: ["-y", "@rarefriend-ai/mcp"]`, and the two env vars
@@ -91,7 +92,7 @@ get_contact(contactId)
 
 ```
 create_contact(displayName, firstName?, lastName?, emails?, phones?,
-               company?, role?, location?, bio?)
+               company?, currentRole?, location?, bio?)
 
 update_contact(contactId, ...same optional fields...)
 ```
@@ -101,10 +102,10 @@ update_contact(contactId, ...same optional fields...)
 ### 3 — Notes
 
 ```
-create_note(contactId, content, isPinned?)
-update_note(noteId, content?, isPinned?)
+create_note(contactId, body, isPinned?)
+update_note(noteId, body?, isPinned?)
 delete_note(noteId)
-list_notes(contactId, limit?, offset?)
+list_notes(contactId)
 get_note(noteId)
 pin_note(noteId, pinned)
 search_notes(query, limit?)          — full-text across all contacts
@@ -132,11 +133,10 @@ create_google_calendar_event(title, startTime, endTime, description?,
   transparency: 'opaque' (busy) | 'transparent' (free)
 
 search_google_calendar_events(query, timeMin?, timeMax?)
-get_upcoming_google_events(limit?, days?)
-reschedule_google_event(eventId, startTime, endTime)
+get_upcoming_google_events(days?, maxResults?)
+reschedule_google_event(eventId, newStartTime, newEndTime, message?)
 cancel_google_event(eventId)
-find_available_google_time(durationMinutes, preferredDays?,
-                            preferredTimeRange?, attendeeEmails?)
+find_available_google_time(startDate, endDate, duration, workingHoursOnly?)
 ```
 
 **Pattern:** Pass times in ISO 8601 with timezone. Use `find_available_google_time` before scheduling. Use `search_contacts` to resolve attendee emails by name before creating events.
@@ -149,11 +149,10 @@ get_microsoft_contact(contactId)
 create_microsoft_calendar_event(title, startTime, endTime, description?,
                                  attendees?, location?)
 search_microsoft_calendar_events(query, timeMin?, timeMax?)
-get_upcoming_microsoft_events(limit?, days?)
-reschedule_microsoft_event(eventId, startTime, endTime)
+get_upcoming_microsoft_events(days?, maxResults?)
+reschedule_microsoft_event(eventId, newStartTime, newEndTime, message?)
 cancel_microsoft_event(eventId)
-find_available_microsoft_time(durationMinutes, preferredDays?,
-                               preferredTimeRange?, attendeeEmails?)
+find_available_microsoft_time(startDate, endDate, duration, workingHoursOnly?)
 ```
 
 Microsoft contacts are readable from Outlook — edits go through `update_contact` in Rarefriend.
@@ -189,20 +188,20 @@ get_integration_sync_status(integration)
 
 | Category     | Tool                              | Key params                                       |
 | ------------ | --------------------------------- | ------------------------------------------------ |
-| Contacts     | `search_contacts`                 | `query`, `searchMode`, `tags`, `limit`, `offset` |
+| Contacts     | `search_contacts`                 | `query`, `searchMode`, `tag`, `limit`, `offset`  |
 |              | `get_contact`                     | `contactId`                                      |
 |              | `create_contact`                  | `displayName` (required), others optional        |
 |              | `update_contact`                  | `contactId` + fields to change                   |
 |              | `delete_contact`                  | `contactId`                                      |
-| Notes        | `create_note`                     | `contactId`, `content`                           |
+| Notes        | `create_note`                     | `contactId`, `body`                              |
 |              | `search_notes`                    | `query`                                          |
 |              | `get_recent_notes`                | `limit`                                          |
 |              | `pin_note`                        | `noteId`, `pinned`                               |
 | Tags         | `add_tag`                         | `contactId`, `tag`                               |
 |              | `rename_tag`                      | `oldTag`, `newTag`                               |
-| Google Cal   | `find_available_google_time`      | `durationMinutes`                                |
+| Google Cal   | `find_available_google_time`      | `startDate`, `endDate`, `duration`               |
 |              | `create_google_calendar_event`    | `title`, `startTime`, `endTime`                  |
-| Microsoft    | `find_available_microsoft_time`   | `durationMinutes`                                |
+| Microsoft    | `find_available_microsoft_time`   | `startDate`, `endDate`, `duration`               |
 |              | `create_microsoft_calendar_event` | `title`, `startTime`, `endTime`                  |
 | Bulk         | `bulk_create_contacts`            | `contacts[]` (max 50 per call)                   |
 | Integrations | `connect_integration`             | `integration` (enum)                             |

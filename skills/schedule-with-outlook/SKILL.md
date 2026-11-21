@@ -48,6 +48,7 @@ Access it from your AI assistant, the web app at [rarefriend.com](https://rarefr
 
 1. Call `list_connected_integrations`.
    - **Tool not available → MCP not connected.** Present these steps inline to the user:
+     0. **Installed as the Rarefriend Claude plugin?** The server is already set up. Ask the user to run `/mcp` and check that `rarefriend` is connected; if it failed, update the Client ID and Secret with `/plugin configure rarefriend@rarefriend`, then run `/reload-plugins`. Skip the steps below.
      1. Sign in at [rarefriend.com](https://rarefriend.com) → **Settings → Integrations → MCP** → copy the Client ID and Client Secret
      2. **Claude Code / Codex:** run `claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your_id -e RAREFRIEND_CLIENT_SECRET=your_secret -- npx -y @rarefriend-ai/mcp`
      3. **Cursor:** add to `~/.cursor/mcp.json` under `mcpServers.rarefriend` with `command: npx`, `args: ["-y", "@rarefriend-ai/mcp"]`, and the two env vars
@@ -83,23 +84,22 @@ To edit a contact, use `update_contact` — Microsoft contacts are read-only via
 ### Check Outlook calendar
 
 ```
-get_upcoming_microsoft_events(limit?, days?)
+get_upcoming_microsoft_events(days?, maxResults?)
 search_microsoft_calendar_events(query, timeMin?, timeMax?)
 ```
 
 ### Find available time
 
 ```
-find_available_microsoft_time(durationMinutes, preferredDays?,
-                               preferredTimeRange?, attendeeEmails?)
+find_available_microsoft_time(startDate, endDate, duration, workingHoursOnly?)
 ```
 
-Always call before scheduling. For multi-person meetings, pass `attendeeEmails` to check all attendees' availability.
+Always call before scheduling. `startDate` and `endDate` are ISO 8601 and must include the user's UTC offset (for example `2026-11-20T09:00:00+05:30`; ask for their timezone if you don't know it, because without an offset the server reads the time in its own timezone); `duration` is in minutes (15–480). `workingHoursOnly` limits results to weekdays, 09:00 to 17:00, so leave it off for weekend or evening searches. It checks only the connected user's own calendar — it cannot see other attendees' availability, so confirm the time with them.
 
 If the user gives a name instead of an email:
 
 1. `search_microsoft_contacts("name")` or `search_contacts("name")` → get email
-2. Pass email to `find_available_microsoft_time`
+2. Use the email as an attendee in `create_microsoft_calendar_event`
 
 ### Create Outlook events
 
@@ -117,21 +117,21 @@ create_microsoft_calendar_event(
 ### Reschedule and cancel
 
 ```
-reschedule_microsoft_event(eventId, startTime, endTime)
+reschedule_microsoft_event(eventId, newStartTime, newEndTime, message?)
 cancel_microsoft_event(eventId)
 ```
 
-Use `search_microsoft_calendar_events` to find the `eventId` first.
+Use `search_microsoft_calendar_events` to find the `eventId` first. `message` is added to the event body as `[RESCHEDULED: …]`.
 
 ### Notes
 
 Notes live in Rarefriend, not Outlook — they persist even if the Microsoft integration is disconnected.
 
 ```
-create_note(contactId, content, isPinned?)
-update_note(noteId, content?, isPinned?)
+create_note(contactId, body, isPinned?)
+update_note(noteId, body?, isPinned?)
 delete_note(noteId)
-list_notes(contactId, limit?, offset?)
+list_notes(contactId)
 get_note(noteId)
 pin_note(noteId, pinned)
 search_notes(query, limit?)     — full-text across ALL contacts
@@ -179,19 +179,19 @@ get_integration_sync_status("microsoft_contacts")
 **"Schedule a Teams call with John next week"**
 
 1. `search_contacts("John", searchMode="name")` or `search_microsoft_contacts("John")` → get email
-2. `find_available_microsoft_time(30, preferredDays=["Monday","Tuesday","Wednesday"], attendeeEmails=[john@email])`
+2. `find_available_microsoft_time(startDate=<Monday 09:00>, endDate=<Wednesday 18:00>, duration=30, workingHoursOnly=true)`
 3. Confirm slot with user
 4. `create_microsoft_calendar_event(title, startTime, endTime, attendees=[john@email])`
 
 **"What meetings do I have this week?"**
 
-1. `get_upcoming_microsoft_events(limit=20, days=7)`
+1. `get_upcoming_microsoft_events(maxResults=20, days=7)`
 2. Summarise by day
 
 **"Add a note after my call with Sarah"**
 
 1. `search_contacts("Sarah", searchMode="name")` → get contactId
-2. `create_note(contactId, content)`
+2. `create_note(contactId, body)`
 
 **"Tag everyone at Acme Corp as client"**
 

@@ -48,6 +48,7 @@ Access it from your AI assistant, the web app at [rarefriend.com](https://rarefr
 
 1. Call `list_connected_integrations`.
    - **Tool not available → MCP not connected.** Present these steps inline to the user:
+     0. **Installed as the Rarefriend Claude plugin?** The server is already set up. Ask the user to run `/mcp` and check that `rarefriend` is connected; if it failed, update the Client ID and Secret with `/plugin configure rarefriend@rarefriend`, then run `/reload-plugins`. Skip the steps below.
      1. Sign in at [rarefriend.com](https://rarefriend.com) → **Settings → Integrations → MCP** → copy the Client ID and Client Secret
      2. **Claude Code / Codex:** run `claude mcp add rarefriend -e RAREFRIEND_CLIENT_ID=your_id -e RAREFRIEND_CLIENT_SECRET=your_secret -- npx -y @rarefriend-ai/mcp`
      3. **Cursor:** add to `~/.cursor/mcp.json` under `mcpServers.rarefriend` with `command: npx`, `args: ["-y", "@rarefriend-ai/mcp"]`, and the two env vars

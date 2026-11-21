@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "rarefriend": {
+      "command": "npx",
+      "args": ["-y", "@rarefriend-ai/mcp@1.0.3"],
+      "env": {
+        "RAREFRIEND_CLIENT_ID": "${user_config.client_id}",
+        "RAREFRIEND_CLIENT_SECRET": "${user_config.client_secret}"
+      }
+    }
+  }
+}

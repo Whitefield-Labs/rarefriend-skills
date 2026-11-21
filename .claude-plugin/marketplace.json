@@ -1,0 +1,12 @@
+{
+  "name": "rarefriend",
+  "owner": { "name": "Whitefield Labs", "url": "https://rarefriend.com" },
+  "description": "Official Rarefriend plugins for Claude",
+  "plugins": [
+    {
+      "name": "rarefriend",
+      "source": "./plugins/rarefriend",
+      "description": "Rarefriend personal CRM: contacts, notes, tags, Google and Outlook scheduling."
+    }
+  ]
+}
